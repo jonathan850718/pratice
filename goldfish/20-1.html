@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <title>保存文本域格式</title>
+    <style type="text/css">
+      .showtext {
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+      .white-space-normal {
+        white-space: normal;
+      }
+      .white-space-nowrap {
+        white-space: nowrap;
+      }
+      .white-space-pre {
+        white-space: pre;
+      }
+      .white-space-pre-wrap {
+        white-space: pre-wrap;
+      }
+      .white-space-pre-line {
+        white-space: pre-line;
+      }
+      .white-space-break-spaces {
+        white-space: break-spaces;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div style="width: 800px; margin: 40px auto">
+      <textarea id="myinput" style="height: 200px; width: 200px"></textarea>
+      <button onclick="submit()">提交</button>
+      <p id="normal" class="showtext white-space-normal">normal:</p>
+      <p id="nowrap" class="showtext white-space-nowrap">nowrap:</p>
+      <p id="pre" class="showtext white-space-pre">space-pre:</p>
+      <p id="pre-wrap" class="showtext white-space-pre-wrap">pre-wrap:</p>
+      <p id="pre-line" class="showtext white-space-pre-line">pre-line:</p>
+      <p id="break-spaces" class="showtext white-space-break-spaces">
+        break-spaces:
+      </p>
+    </div>
+    <script>
+      function submit() {
+        const inputValue = document.querySelector("#myinput").value;
+        console.log("文本域内容", inputValue);
+        [...document.querySelectorAll(".showtext")].forEach((x) => {
+          x.append(inputValue);
+        });
+      }
+    </script>
+  </body>
+</html>

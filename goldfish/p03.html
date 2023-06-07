@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 960px;
+        height: 800px;
+        border: 6px solid #f00;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        align-items: center;
+        align-content: center;
+
+        /* justify-content: space-around;
+        flex-direction: row;
+        align-content: center;
+        align-items: stretch; */
+      }
+
+      .item {
+        width: 400px;
+        height: 200px;
+
+        font-size: 16px;
+        /* margin-bottom: 20px; */
+      }
+      .item:first-letter {
+        font-size: 50px;
+      }
+      .item1 {
+        background-color: #00a6ff;
+        flex-basis: 200px;
+
+        flex-shrink: 0;
+      }
+      .item2 {
+        background-color: #cc3322;
+        flex-shrink: 0;
+      }
+      .item3 {
+        background-color: #fbb;
+        flex-shrink: 0;
+      }
+      .item4 {
+        background-color: #aabbff;
+      }
+      .item5 {
+        background-color: #aacc00;
+      }
+      .item6 {
+        background-color: #bb00cc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="item item1">
+        1 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        Exercitationem perspiciatis fugiat, et labore culpa quas quam optio
+        molestiae quibusdam fuga ipsa excepturi quae ullam? Recusandae molestias
+        nostrum sint amet officiis.
+      </div>
+      <div class="item item2">
+        2 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        Exercitationem perspiciatis fugiat, et labore culpa quas quam optio
+        molestiae quibusdam fuga ipsa excepturi quae ullam? Recusandae molestias
+        nostrum sint amet officiis.
+      </div>
+      <div class="item item3">
+        3 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        Exercitationem perspiciatis fugiat, et labore culpa quas quam optio
+      </div>
+      <!-- <div class="item item4">4</div>
+      <div class="item item5">5</div>
+      <div class="item item6">6</div> -->
+    </div>
+  </body>
+</html>

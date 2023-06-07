@@ -1,0 +1,18 @@
+/*標籤名稱選擇器*/
+body{background-color:rgb(222, 255, 255)}
+/*ID 選擇器*/
+#TITLE-1{text-decoration: line-through}
+/* class 選擇器*/
+.title{
+    color:brown;
+    text-decoration:underline;
+    font-size:50px
+}
+.content{
+    color: rgb(0, 0, 0);
+    border:2px solid gray;
+}
+.test{
+    margin-top:50px;
+    border: dotted rgba(0, 134, 116, 0.74);
+}

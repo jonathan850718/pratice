@@ -1,0 +1,16 @@
+.frame{
+    display: flex /*水平排列*/;
+}
+
+.Left{
+    background-color: blue;
+    flex: none;
+    width: 200px;
+}
+
+.Right{
+    background-color: brown;
+    display:flex ;
+    flex: auto;
+ 
+}
