@@ -1,23 +1,2400 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>ArcGIS Developers Guide: Display a map (2D)</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div style="border-color: black; border-style: solid; padding: 4px; margin:4px 0px 4px">
+        <p>這是一個景點資料匯入資料庫測試</p>
+        <button id="CountyBtn">展示城市</button>
 
-  <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">
-  <link rel="stylesheet" href="main.css" />
-  <script src="https://js.arcgis.com/4.19/"></script>
-  <script src="main.js"></script>
+    </div>
+    <div style="border-color: black; border-style: solid; padding: 4px; margin:4px 0px 4px">
+        <p>展點製作googleapiplace</p>
+        <div style="margin:5px"><button id="culture_education_place_api">各級學校</button></div>
+        <div style="margin:5px"><button id="culture_education_place_api_monument">古蹟</button></div>
+        <div style="margin:5px"><button id="culture_education_place_api_historicbuilding">歷史建築</button></div>
+        <div style="margin:5px"><button id="culture_education_place_api_Localmuseum">地方文化館</button></div>
+        <div style="margin:5px"> <button id="culture_education_place_api_CommunityCollege">社區大學</button></div>
+    </div>
+    <div style="border-color: black; border-style: solid; padding: 4px; margin:4px 0px 4px">
+        <p>交通資訊資料匯入製作</p>
+        <div style="border-color: black; border-style: solid; padding: 4px; margin:4px 0px 4px">
+            <p>匯入全部的交通資訊</p>
+            <button id="importalldata_traffic_information">匯入全部</button>
+        </div>
+        <div style="border-color: black; border-style: solid; padding: 4px; margin:4px 0px 4px">
+            <p>個別匯入</p>
+            <div style="margin:2px ">
+                <button style="margin:2px" id="traffic_information_gasstation">加油站</button>
+                <button style="margin:2px" id="traffic_information_CNGStation">加氣站</button>
+            </div>
+            <div style="margin:2px ">
+                <button style="margin:2px" id="traffic_information_BusInterchange">公車轉運站</button>
+                <button style="margin:2px" id="traffic_information_BusStopName">公車站牌資訊</button>
+            </div>
+            <div style="margin:2px">
+                <button style="margin:2px" id="traffic_information_escrowparkinglot">認養及代管空地停車場資訊</button>
+                <button style="margin:2px" id="traffic_information_privateparkinglot">民營停車場</button>
+                <button style="margin:2px" id="traffic_information_publicpaidparkinglot">公有收費停車場</button>
+                <button style="margin:2px" id="traffic_information_publicfreeparkinglot">公有免費停車場</button>
+                <button style="margin:2px" id="traffic_information_disabledparkingspace">路邊身障停車格</button>
+                <button style="margin:2px" id="traffic_information_paidparkingspace">路邊收費停車格</button>
+            </div>
+        </div>
+    </div>
+    <div style="border-color: black; border-style: solid; padding: 4px; margin:4px 0px 4px">
+        <p>公共設施資料匯入製作</p>
+        <div style="border-color: black; border-style: solid; padding: 4px; margin:4px 0px 4px">
+            <p>匯入全部的公共設施</p>
+            <button id="importalldata_public_infrastructure">匯入</button>
+        </div>
+        <div style="border-color: black; border-style: solid; padding: 4px; margin:4px 0px 4px">
+            <p>個別匯入</p>
+            <div style="margin:2px ">
+                <button style="margin:2px" id="public_infrastructure_park">公園</button>
+            </div>
+            <div style="margin:2px ">
+                <button style="margin:2px" id="public_infrastructure_library">圖書館</button>
+            </div>
+            <div style="margin:2px ">
+                <button style="margin:2px" id="public_infrastructure_publicmarket">公有市場</button>
+                <button style="margin:2px" id="public_infrastructure_privatemarket">民有市場</button>
+            </div>
+            <div style="margin:2px ">
+                <button style="margin:2px" id="public_infrastructure_schoolswimmingpool">各級學校游泳池</button>
+            </div>
+            <div style="margin:2px">
+                <button style="margin:2px" id="public_infrastructure_governmentstadium">體育處所屬體育場館</button>
+                <button style="margin:2px" id="public_infrastructure_privatesportsarena">民營運動場館</button>
+            </div>
+        </div>
+    </div>
+    <div style="border-color: black; border-style: solid; padding: 4px; margin:4px 0px 4px">
+        <p>都市計畫更新相關資料匯入製作</p>
+        <div style="border-color: black; border-style: solid; padding: 4px; margin:4px 0px 4px">
+            <p>匯入全部的都更相關資料</p>
+            <button id="importalldata_urban_renewal">匯入</button>
+        </div>
+        <div style="border-color: black; border-style: solid; padding: 4px; margin:4px 0px 4px">
+            <p>個別匯入</p>
+            <div style="margin:2px ">
+                <button style="margin:2px" id="urban_renewal_allRenovationArchitecture">活化老屋</button>
+            </div>
+
+        </div>
+    </div>
+    <div style="border-color: black; border-style: solid; padding: 4px; margin:4px 0px 4px">
+        <p>育樂場所資料匯入製作</p>
+        <div style="border-color: black; border-style: solid; padding: 4px; margin:4px 0px 4px">
+            <p>匯入全部的育樂場所資料</p>
+            <button id="importalldata_recreattional_place">匯入</button>
+        </div>
+        <div style="border-color: black; border-style: solid; padding: 4px; margin:4px 0px 4px">
+            <p>個別匯入</p>
+            <div style="margin:2px ">
+                <button style="margin:2px" id="recreattional_place_movie">電影院</button>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    //google URL與API
+    var geocodeURL = "https://maps.googleapis.com/maps/api/geocode/json";
+    var API_Key = "AIzaSyBPKKdpYkAy0mAe3NZiBedHiuAMrWcXI10";
+    //tgos地址定位
+    var wsUrl_County = "https://addr.tgos.tw/addrws/v40/GetAddrList.asmx/GetCountyList"; //全國門牌清單查詢服務_縣市查詢 WebService 網址
+    var wsUrl_Town = "https://addr.tgos.tw/addrws/v40/GetAddrList.asmx/GetTownList"; //全國門牌清單查詢服務_鄉鎮市區查詢 WebService 網址
+    var wsUrl_Road = "https://addr.tgos.tw/addrws/v40/GetAddrList.asmx/GetRoadList"; //全國門牌清單查詢服務_路街查詢 WebService 網址
+    var wsUrl_Lane = "https://addr.tgos.tw/addrws/v40/GetAddrList.asmx/GetLaneList"; //全國門牌清單查詢服務_巷查詢 WebService 網址
+    var wsUrl_Alley = "https://addr.tgos.tw/addrws/v40/GetAddrList.asmx/GetAlleyList"; //全國門牌清單查詢服務_弄查詢 WebService 網址
+    var wsUrl_No = "https://addr.tgos.tw/addrws/v40/GetAddrList.asmx/GetNoList"; //全國門牌清單查詢服務_號查詢 WebService 網址
+    var wsUrl = "https://addr.tgos.tw/addrws/v40/QueryAddr.asmx/QueryAddr"; //全國門牌位置比對服務 WebService 網址
+    var AppID = "0kJ52weylb9XWnbHkchuOrvXHsDXCA0Ok5MNW8Iz4GZG9DiSk7NYKw=="; //應用程式識別碼(APPId)
+    var APIKey = "cGEErDNy5yMt1R3trNPYPX9cE0SgGWHYtzkoa/bFaNfIXVbLaoc59Te8eAggkcoIG+Ud4O79Z4b6BXNSZgBZN5FNaYHZA9DKzcoBe/7dEUYOQZdrd+KPjzWfR5HpWr/9KyJCQOfFkiCLIIGkqQUtphcighguoiiLgB1sV8yFlzt94BNkxX/F2TL6JPSoGuNU6bBR/UABivJ4zvqKgUMXfYU3jr8CYnd5VTgvV4LSr1asxx/CS5UlobrnoIM4A+2jttiVn1JQj/qUSr9QxjK8x8EytbBLsHAYN2snXjT3W1rV2sijkOiROZYoPkev5aAl4t72lXis5c1omFcKqmBqCIeXbxfugJRkzY6fR3thjv+HCu9/NXO8pGmaQbjURCn+p8hBywbqti0RpWbjU6ByIAVVewCnshl/TDs+CvQSbN8="; //應用程式介接驗證碼(APIKey)
+    // 定義區域代碼和對應名稱的物件
+    var AreaCode_Code = {
+        67000010: '新營區',
+        67000020: '鹽水區',
+        67000030: '白河區',
+        67000040: '柳營區',
+        67000050: '後壁區',
+        67000060: '東山區',
+        67000070: '麻豆區',
+        67000080: '下營區',
+        67000090: '六甲區',
+        67000100: '官田區',
+        67000110: '大內區',
+        67000120: '佳里區',
+        67000130: '學甲區',
+        67000140: '西港區',
+        67000150: '七股區',
+        67000160: '將軍區',
+        67000170: '北門區',
+        67000180: '新化區',
+        67000190: '善化區',
+        67000200: '新市區',
+        67000210: '安定區',
+        67000220: '山上區',
+        67000230: '玉井區',
+        67000240: '楠西區',
+        67000250: '南化區',
+        67000260: '左鎮區',
+        67000270: '仁德區',
+        67000280: '歸仁區',
+        67000290: '關廟區',
+        67000300: '龍崎區',
+        67000310: '永康區',
+        67000320: '東區',
+        67000330: '南區',
+        67000340: '北區',
+        67000350: '安南區',
+        67000360: '安平區',
+        67000370: '中西區',
+    }
+
+
+    var County_Code = {
+        67000: '台南市',
+    }
+
+    //TWD97 標轉換爲 經緯度公式
+    function twd97_to_latlng($x, $y) {
+        var pow = Math.pow, M_PI = Math.PI;
+        var sin = Math.sin, cos = Math.cos, tan = Math.tan;
+        var $a = 6378137.0, $b = 6356752.314245;
+        var $lng0 = 121 * M_PI / 180, $k0 = 0.9999, $dx = 250000, $dy = 0;
+        var $e = pow((1 - pow($b, 2) / pow($a, 2)), 0.5);
+
+        $x -= $dx;
+        $y -= $dy;
+
+        var $M = $y / $k0;
+
+        var $mu = $M / ($a * (1.0 - pow($e, 2) / 4.0 - 3 * pow($e, 4) / 64.0 - 5 * pow($e, 6) / 256.0));
+        var $e1 = (1.0 - pow((1.0 - pow($e, 2)), 0.5)) / (1.0 + pow((1.0 - pow($e, 2)), 0.5));
+
+        var $J1 = (3 * $e1 / 2 - 27 * pow($e1, 3) / 32.0);
+        var $J2 = (21 * pow($e1, 2) / 16 - 55 * pow($e1, 4) / 32.0);
+        var $J3 = (151 * pow($e1, 3) / 96.0);
+        var $J4 = (1097 * pow($e1, 4) / 512.0);
+
+        var $fp = $mu + $J1 * sin(2 * $mu) + $J2 * sin(4 * $mu) + $J3 * sin(6 * $mu) + $J4 * sin(8 * $mu);
+
+        var $e2 = pow(($e * $a / $b), 2);
+        var $C1 = pow($e2 * cos($fp), 2);
+        var $T1 = pow(tan($fp), 2);
+        var $R1 = $a * (1 - pow($e, 2)) / pow((1 - pow($e, 2) * pow(sin($fp), 2)), (3.0 / 2.0));
+        var $N1 = $a / pow((1 - pow($e, 2) * pow(sin($fp), 2)), 0.5);
+
+        var $D = $x / ($N1 * $k0);
+
+        var $Q1 = $N1 * tan($fp) / $R1;
+        var $Q2 = (pow($D, 2) / 2.0);
+        var $Q3 = (5 + 3 * $T1 + 10 * $C1 - 4 * pow($C1, 2) - 9 * $e2) * pow($D, 4) / 24.0;
+        var $Q4 = (61 + 90 * $T1 + 298 * $C1 + 45 * pow($T1, 2) - 3 * pow($C1, 2) - 252 * $e2) * pow($D, 6) / 720.0;
+        var $lat = $fp - $Q1 * ($Q2 - $Q3 + $Q4);
+
+        var $Q5 = $D;
+        var $Q6 = (1 + 2 * $T1 + $C1) * pow($D, 3) / 6;
+        var $Q7 = (5 - 2 * $C1 + 28 * $T1 - 3 * pow($C1, 2) + 8 * $e2 + 24 * pow($T1, 2)) * pow($D, 5) / 120.0;
+        var $lng = $lng0 + ($Q5 - $Q6 + $Q7) / cos($fp);
+
+        $lat = ($lat * 180) / M_PI;
+        $lng = ($lng * 180) / M_PI;
+
+        return {
+            Y: $lat,
+            X: $lng
+        };
+    }
+
+
+
+
+    //------------------------------------------鄉鎮市區----------------------------
+
+    //展示市區
+    function County() {
+        $.ajax({
+            type: 'GET',
+            url: './api/Village',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data)
+            }
+        })
+    }
+    $(document).ready(function () {
+        $("#CountyBtn").click(function () {
+            County();
+        });
+    });
+
+
+
+    // ----------------------------------------------------------------------------這是文教機構的轉地址程式---------------------------------------------------------------
+
+    // 定義一個函式，用於從 API 獲取學校資訊並轉換成地理座標後儲存
+    function culture_education_allschool() {
+        $.ajax({
+            type: 'GET',
+            url: 'https://soa.tainan.gov.tw/Api/Service/Get/b32ffde3-b030-4445-80a3-e83f06477c78',
+            dataType: 'json',
+            success: function (jsonData) {
+                $.each(jsonData.data, function (index, value) {
+                    var placeName = value.SchoolName;
+                    var address = value.Addr;
+                    console.log(address)
+                    setTimeout(function () {
+                        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(placeName)}&key=${API_Key}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.results.length > 0) {
+                                    var location = data.results[0].geometry.location;
+                                    var Y = location.lat;
+                                    var X = location.lng;
+                                    setTimeout(function () {
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: './api/Cultural_Educational',
+                                            dataType: 'json',
+                                            contentType: 'application/json;charset=utf-8',
+                                            data: JSON.stringify({
+                                                Large_category: '文教機構',
+                                                Medium_category: value.Stage,
+                                                Small_category: value.SchoolType2,
+                                                Schoolname: value.SchoolName,
+                                                District: value.District,
+                                                Address: address,
+                                                Opening_hours: '',
+                                                Tel: value.Tel,
+                                                Fax: value.Fax,
+                                                URL: value.URL,
+                                                X: X,
+                                                Y: Y
+                                            }),
+                                            success: function () {
+                                                console.log('成功匯入資料')
+                                            }, error: function (xhr, status, error) {
+                                                console.log("無法匯入" + error)
+                                            }
+                                        })
+                                    }, 200)
+                                } else {
+                                    allschool_reverseGeocode(address, value);
+                                }
+
+                            })
+                            .catch(error => {
+                                console.error('錯誤' + error)
+                            })
+                    }, index * 100)
+                })
+            }, error: function (xhr, status, error) {
+                console.log("無法找到資料" + error)
+            }
+        });
+    }
+
+
+    function allschool_reverseGeocode(address, value) {
+        setTimeout(function () {
+            $.ajax({
+                type: 'GET',
+                url: geocodeURL,
+                dataType: 'json',
+                data: {
+                    address: address,
+                    key: API_Key
+                }, success: function (GEOdata) {
+                    if (GEOdata && GEOdata.results.length > 0) {
+                        var X = GEOdata.results[0].geometry.location.lng;
+                        var Y = GEOdata.results[0].geometry.location.lat;
+                        setTimeout(function () {
+                            $.ajax({
+                                type: 'POST',
+                                url: './api/Cultural_Educational',
+                                dataType: 'json',
+                                contentType: 'application/json;charset=utf-8',
+                                data: JSON.stringify({
+                                    Large_category: '文教機構',
+                                    Medium_category: value.Stage,
+                                    Small_category: value.SchoolType2,
+                                    Schoolname: value.SchoolName,
+                                    District: value.District,
+                                    Address: address,
+                                    Opening_hours: '',
+                                    Tel: value.Tel,
+                                    Fax: value.Fax,
+                                    URL: value.URL,
+                                    X: X,
+                                    Y: Y
+                                }),
+                                success: function () {
+                                    console.log('成功匯入資料')
+                                }, error: function (xhr, status, error) {
+                                    console.log("無法匯入" + error)
+                                }
+                            })
+                        }, 200)
+                    } else {
+                        console.log("無法找到門牌")
+                    }
+                }, error: function (xhr, status, error) {
+                    console.log("無法找到資料" + error)
+                }
+            })
+        }, 100)
+    }
+
+
+
+
+    $(document).ready(function () {
+        $('#culture_education_place_api').click(function () {
+            culture_education_allschool()
+        })
+    });
+
+
+
+
+
+    // 定義一個函式，用於從 API 獲取古蹟並轉換成地理座標後儲存
+    function culture_education_place_api_monument() {
+        // 使用 AJAX 發送 GET 請求
+        $.ajax({
+            type: 'GET',
+            url: 'https://data.tainan.gov.tw/api/3/action/datastore_search?resource_id=a2d26c73-0759-4264-9841-3d895f3b678f',
+            dataType: 'json',
+            success: function (jsonData) {
+                // 使用 $.each 來迭代每個古蹟資訊
+                $.each(jsonData.result.records, function (index, value) {
+                    var placeName = value.名稱;
+                    var address = value.StreetDoorPlate;
+                    var District = AreaCode_Code[value.AreaCode];// 使用區域代碼查找對應名稱
+                    console.log(address);
+                    console.log(placeName);
+                    console.log(District);
+                    // 使用 setTimeout 延遲執行
+                    setTimeout(function () {
+                        // 使用 fetch 發送地理編碼請求
+                        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(placeName)}&key=${API_Key}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.results.length > 0) {
+                                    var location = data.results[0].geometry.location;
+                                    var Y = location.lat;
+                                    var X = location.lng;
+                                    console.log(X, Y);
+                                    setTimeout(function () {
+                                        // 使用 AJAX 發送 POST 請求，將資訊儲存到 API 端點
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: './api/Cultural_Educational',
+                                            dataType: 'json',
+                                            contentType: 'application/json;charset=utf-8',
+                                            data: JSON.stringify({
+                                                Large_category: '文教機構',
+                                                Medium_category: '古蹟文物',
+                                                Small_category: value.文化資產類別,
+                                                Schoolname: placeName,
+                                                District: District,// 使用區域名稱
+                                                Address: address,
+                                                Opening_hours: '',
+                                                Tel: '',
+                                                Fax: '',
+                                                URL: '',
+                                                X: X,
+                                                Y: Y
+                                            }),
+                                            success: function () {
+                                                console.log('成功匯入資料');
+                                            }, error: function (xhr, status, error) {
+                                                console.log("無法匯入" + error);
+                                            }
+                                        });
+                                    }, 200);
+                                } else {
+                                    // 如果找不到地理座標，嘗試反地理編碼
+                                    allmonument_reverseGeocode(address, value);
+                                }
+                            })
+                            .catch(error => {
+                                console.error('錯誤' + error);
+                            });
+                    }, index * 100);
+                });
+            }, error: function (xhr, status, error) {
+                console.log("無法找到資料" + error);
+            }
+        });
+    }
+
+    // 定義函式，嘗試使用反地理編碼來找到地理座標
+    function allmonument_reverseGeocode(address, value) {
+        var placeName = value.名稱;
+        var address = value.StreetDoorPlate;
+        var District = AreaCode_Code[value.AreaCode];// 使用區域代碼查找對應名稱
+        setTimeout(function () {
+            $.ajax({
+                type: 'GET',
+                url: geocodeURL,
+                dataType: 'json',
+                data: {
+                    address: address,
+                    key: API_Key
+                }, success: function (GEOdata) {
+                    if (GEOdata && GEOdata.results.length > 0) {
+                        var X = GEOdata.results[0].geometry.location.lng;
+                        var Y = GEOdata.results[0].geometry.location.lat;
+                        setTimeout(function () {
+                            // 使用 AJAX 發送 POST 請求，將資訊儲存到 API 端點
+                            $.ajax({
+                                type: 'POST',
+                                url: './api/Cultural_Educational',
+                                dataType: 'json',
+                                contentType: 'application/json;charset=utf-8',
+                                data: JSON.stringify({
+                                    Large_category: '文教機構',
+                                    Medium_category: '古蹟文物',
+                                    Small_category: value.文化資產類別,
+                                    Schoolname: placeName,
+                                    District: District,// 使用區域名稱
+                                    Address: address,
+                                    Opening_hours: '',
+                                    Tel: '',
+                                    Fax: '',
+                                    URL: '',
+                                    X: X,
+                                    Y: Y
+                                }),
+                                success: function () {
+                                    console.log('成功匯入資料');
+                                }, error: function (xhr, status, error) {
+                                    console.log("無法匯入" + error);
+                                }
+                            });
+                        }, 200);
+                    } else {
+                        console.log("無法找到門牌");
+                    }
+                }, error: function (xhr, status, error) {
+                    console.log("無法找到資料" + error);
+                }
+            });
+        }, 100);
+    }
+
+    // 在文件載入完成後執行
+    $(document).ready(function () {
+        // 綁定按鈕點擊事件，觸發 culture_education_place_api_monument 函式
+        $('#culture_education_place_api_monument').click(function () {
+            culture_education_place_api_monument();
+        });
+    });
+
+
+    // 定義一個函式，用於從 API 獲取歷史建築並轉換成地理座標後儲存
+    function culture_education_place_api_historicbuilding() {
+        // 使用 AJAX 發送 GET 請求
+        $.ajax({
+            type: 'GET',
+            url: 'https://data.tainan.gov.tw/api/3/action/datastore_search?resource_id=7da0be45-51e2-47a6-893e-a0b225611fe6',
+            dataType: 'json',
+            success: function (jsonData) {
+                // 使用 $.each 來迭代每個歷史建築資訊
+                $.each(jsonData.result.records, function (index, value) {
+                    var placeName = value.名稱;
+                    var address = value.StreetDoorPlate;
+                    var District = AreaCode_Code.hasOwnProperty(value.AreaCode) ? AreaCode_Code[value.AreaCode] : '';// 使用區域代碼查找對應名稱，若代碼裡面有null值會被判斷為
+                    var County = County_Code.hasOwnProperty(value.CountyCode) ? County_Code[value.CountyCode] : '';//使用區域代碼查找對應名稱，若代碼裡面有null值會被判斷為''
+                    var completeaddress = County + District + address;
+                    // 使用 setTimeout 延遲執行
+                    setTimeout(function () {
+                        // 使用 fetch 發送地理編碼請求
+                        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(placeName)}&key=${API_Key}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.results.length > 0) {
+                                    var location = data.results[0].geometry.location;
+                                    var Y = location.lat;
+                                    var X = location.lng;
+                                    console.log(X, Y);
+                                    setTimeout(function () {
+                                        // 使用 AJAX 發送 POST 請求，將資訊儲存到 API 端點
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: './api/Cultural_Educational',
+                                            dataType: 'json',
+                                            contentType: 'application/json;charset=utf-8',
+                                            data: JSON.stringify({
+                                                Large_category: '文教機構',
+                                                Medium_category: '古蹟文物',
+                                                Small_category: value.文化資產類別,
+                                                Schoolname: placeName,
+                                                District: District,// 使用區域名稱
+                                                Address: completeaddress,
+                                                Opening_hours: '',
+                                                Tel: '',
+                                                Fax: '',
+                                                URL: '',
+                                                X: X,
+                                                Y: Y
+                                            }),
+                                            success: function () {
+                                                console.log('成功匯入資料');
+                                            }, error: function (xhr, status, error) {
+                                                console.log("無法匯入" + error);
+                                            }
+                                        });
+                                    }, 200);
+                                } else {
+                                    // 如果找不到地理座標，嘗試反地理編碼
+                                    allhistoricbuilding_reverseGeocode(completeaddress, value);
+                                }
+                            })
+                            .catch(error => {
+                                console.error('錯誤' + error);
+                            });
+                    }, index * 100);
+                });
+            }, error: function (xhr, status, error) {
+                console.log("無法找到資料" + error);
+            }
+        });
+    }
+
+    // 定義函式，嘗試使用反地理編碼來找到地理座標
+    function allhistoricbuilding_reverseGeocode(completeaddress, value) {
+        setTimeout(function () {
+            $.ajax({
+                type: 'GET',
+                url: geocodeURL,
+                dataType: 'json',
+                data: {
+                    address: completeaddress,
+                    key: API_Key
+                }, success: function (GEOdata) {
+                    if (GEOdata && GEOdata.results.length > 0) {
+                        var X = GEOdata.results[0].geometry.location.lng;
+                        var Y = GEOdata.results[0].geometry.location.lat;
+                        var placeName = value.名稱;
+                        var District = AreaCode_Code.hasOwnProperty(value.AreaCode) ? AreaCode_Code[value.AreaCode] : '';// 使用區域代碼查找對應名稱，若代碼裡面有null值會被判斷為
+                        var County = County_Code.hasOwnProperty(value.CountyCode) ? County_Code[value.CountyCode] : '';//使用區域代碼查找對應名稱，若代碼裡面有null值會被判斷為''
+                        setTimeout(function () {
+                            // 使用 AJAX 發送 POST 請求，將資訊儲存到 API 端點
+                            $.ajax({
+                                type: 'POST',
+                                url: './api/Cultural_Educational',
+                                dataType: 'json',
+                                contentType: 'application/json;charset=utf-8',
+                                data: JSON.stringify({
+                                    Large_category: '文教機構',
+                                    Medium_category: '古蹟文物',
+                                    Small_category: value.文化資產類別,
+                                    Schoolname: placeName,
+                                    District: District,// 使用區域名稱
+                                    Address: completeaddress,
+                                    Opening_hours: '',
+                                    Tel: '',
+                                    Fax: '',
+                                    URL: '',
+                                    X: X,
+                                    Y: Y
+                                }),
+                                success: function () {
+                                    console.log('成功匯入資料');
+                                }, error: function (xhr, status, error) {
+                                    console.log("無法匯入" + error);
+                                }
+                            });
+                        }, 200);
+                    } else {
+                        console.log("無法找到門牌");
+                    }
+                }, error: function (xhr, status, error) {
+                    console.log("無法找到資料" + error);
+                }
+            });
+        }, 100);
+    }
+
+    // 在文件載入完成後執行
+    $(document).ready(function () {
+        // 綁定按鈕點擊事件，觸發 culture_education_place_api_historicbuilding 函式
+        $('#culture_education_place_api_historicbuilding').click(function () {
+            culture_education_place_api_historicbuilding();
+        });
+    });
+
+    // 定義一個函式，用於從 API 獲取地方文化館並轉換成地理座標後儲存
+    function culture_education_place_api_Localmuseum() {
+        // 使用 AJAX 發送 GET 請求
+        $.ajax({
+            type: 'GET',
+            url: 'https://soa.tainan.gov.tw/Api/Service/Get/9bddca11-50ac-40be-910d-d10bbb516b54',
+            dataType: 'json',
+            success: function (jsonData) {
+                // 使用 $.each 來迭代每個地方文化館資訊
+                $.each(jsonData.data, function (index, value) {
+                    var placeName = value.館舍名稱;
+                    var address = value.StreetDoorPlate;
+                    var District = AreaCode_Code.hasOwnProperty(value.AreaCode) ? AreaCode_Code[value.AreaCode] : '';// 使用區域代碼查找對應名稱，若代碼裡面有null值會被判斷為
+                    var County = County_Code.hasOwnProperty(value.CountyCode) ? County_Code[value.CountyCode] : '';//使用區域代碼查找對應名稱，若代碼裡面有null值會被判斷為''
+                    var completeaddress = County + District + address;
+                    console.log(address);
+                    console.log(placeName);
+                    console.log(District);
+                    console.log(County);
+                    console.log(completeaddress);
+
+
+                    // 使用 setTimeout 延遲執行
+                    setTimeout(function () {
+                        // 使用 fetch 發送地理編碼請求
+                        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(placeName)}&key=${API_Key}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.results.length > 0) {
+                                    var location = data.results[0].geometry.location;
+                                    var Y = location.lat;
+                                    var X = location.lng;
+                                    console.log(X, Y);
+                                    setTimeout(function () {
+                                        // 使用 AJAX 發送 POST 請求，將資訊儲存到 API 端點
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: './api/Cultural_Educational',
+                                            dataType: 'json',
+                                            contentType: 'application/json;charset=utf-8',
+                                            data: JSON.stringify({
+                                                Large_category: '文教機構',
+                                                Medium_category: '藝文設施',
+                                                Small_category: '地方文化館',
+                                                Schoolname: placeName,
+                                                District: District,// 使用區域名稱
+                                                Address: completeaddress,
+                                                Opening_hours: value.開放時間,
+                                                Tel: value.聯絡電話,
+                                                Fax: '',
+                                                URL: value.網頁,
+                                                X: X,
+                                                Y: Y
+                                            }),
+                                            success: function () {
+                                                console.log('成功匯入資料');
+                                            }, error: function (xhr, status, error) {
+                                                console.log("無法匯入" + error);
+                                            }
+                                        });
+                                    }, 200);
+                                } else {
+                                    // 如果找不到地理座標，嘗試反地理編碼
+                                    allLocalmuseum_reverseGeocode(address, value);
+                                }
+                            })
+                            .catch(error => {
+                                console.error('錯誤' + error);
+                            });
+                    }, index * 100);
+                });
+            }, error: function (xhr, status, error) {
+                console.log("無法找到資料" + error);
+            }
+        });
+    }
+
+    // 定義函式，嘗試使用反地理編碼來找到地理座標
+    function allLocalmuseum_reverseGeocode(address, value) {
+        var placeName = value.館舍名稱;
+        var address = value.StreetDoorPlate;
+        var District = AreaCode_Code.hasOwnProperty(value.AreaCode) ? AreaCode_Code[value.AreaCode] : '';// 使用區域代碼查找對應名稱，若代碼裡面有null值會被判斷為
+        var County = County_Code.hasOwnProperty(value.CountyCode) ? County_Code[value.CountyCode] : '';//使用區域代碼查找對應名稱，若代碼裡面有null值會被判斷為''
+        var completeaddress = County + District + address;
+        setTimeout(function () {
+            $.ajax({
+                type: 'GET',
+                url: geocodeURL,
+                dataType: 'json',
+                data: {
+                    address: address,
+                    key: API_Key
+                }, success: function (GEOdata) {
+                    if (GEOdata && GEOdata.results.length > 0) {
+                        var X = GEOdata.results[0].geometry.location.lng;
+                        var Y = GEOdata.results[0].geometry.location.lat;
+                        setTimeout(function () {
+                            // 使用 AJAX 發送 POST 請求，將資訊儲存到 API 端點
+                            $.ajax({
+                                type: 'POST',
+                                url: './api/Cultural_Educational',
+                                dataType: 'json',
+                                contentType: 'application/json;charset=utf-8',
+                                data: JSON.stringify({
+                                    Large_category: '文教機構',
+                                    Medium_category: '藝文設施',
+                                    Small_category: '地方文化館',
+                                    Schoolname: placeName,
+                                    District: District,// 使用區域名稱
+                                    Address: completeaddress,
+                                    Opening_hours: value.開放時間,
+                                    Tel: value.聯絡電話,
+                                    Fax: '',
+                                    URL: value.網頁,
+                                    X: X,
+                                    Y: Y
+                                }),
+                                success: function () {
+                                    console.log('成功匯入資料');
+                                }, error: function (xhr, status, error) {
+                                    console.log("無法匯入" + error);
+                                }
+                            });
+                        }, 200);
+                    } else {
+                        console.log("無法找到門牌");
+                    }
+                }, error: function (xhr, status, error) {
+                    console.log("無法找到資料" + error);
+                }
+            });
+        }, 100);
+    }
+
+    // 在文件載入完成後執行
+    $(document).ready(function () {
+        // 綁定按鈕點擊事件，觸發 culture_education_place_api_historicbuilding 函式
+        $('#culture_education_place_api_Localmuseum').click(function () {
+            culture_education_place_api_Localmuseum();
+        });
+    });
+
+
+
+    // 定義一個函式，用於從 API 獲取地方文化館並轉換成地理座標後儲存
+    function culture_education_place_api_CommunityCollege() {
+        // 使用 AJAX 發送 GET 請求
+        $.ajax({
+            type: 'GET',
+            url: 'https://soa.tainan.gov.tw/Api/Service/Get/2cb515b5-2cac-4f2e-9f2e-674c9d8fadb6',
+            dataType: 'json',
+            success: function (jsonData) {
+                $.each(jsonData.data, function (index, value) {
+                    var placeName = value.社區大學名稱;
+                    var District = AreaCode_Code.hasOwnProperty(value.AreaCode) ? AreaCode_Code[value.AreaCode] : '';// 使用區域代碼查找對應名稱，若代碼裡面有null值會被判斷為''
+                    var completeaddress = District + value.StreetDoorPlate
+
+                    setTimeout(function () {
+                        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(placeName)}&key=${API_Key}`)
+                            .then(response => response.json())
+                            .then(data => {
+
+                                if (data.results.length > 0) {
+                                    var location = data.results[0].geometry.location;
+                                    var X = location.lng;
+                                    var Y = location.lat;
+                                    setTimeout(function () {
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: './api/Cultural_Educational',
+                                            dataType: 'json',
+                                            contentType: 'application/json;charset=utf-8',
+                                            data: JSON.stringify({
+                                                Large_category: '文教機構',
+                                                Medium_category: '社區大學',
+                                                Small_category: '社區大學',
+                                                Schoolname: placeName,
+                                                District: District,// 使用區域名稱
+                                                Address: completeaddress,
+                                                Opening_hours: '',
+                                                Tel: value.電話,
+                                                Fax: '',
+                                                URL: '',
+                                                X: X,
+                                                Y: Y
+                                            }), success: function () {
+                                                console.log("資料匯入成功")
+                                            }, error: function (xhr, status, error) {
+                                                console.log("資料匯入失敗" + error)
+                                            }
+                                        })
+                                    }, 100)
+                                }
+                            }).catch(error => {
+                                console.log('錯誤' + error)
+                            });
+                    }, index * 100)
+                })
+            }, error: function (xhr, status, error) {
+                console.log("無法找到資料" + error)
+            }
+        })
+    }
+
+
+
+    // 在文件載入完成後執行
+    $(document).ready(function () {
+        // 綁定按鈕點擊事件，觸發 culture_education_place_api_historicbuilding 函式
+        $('#culture_education_place_api_CommunityCollege').click(function () {
+            culture_education_place_api_CommunityCollege();
+        });
+    });
+
+
+
+
+
+// ----------------------------------------------------------------------------這是交通資訊的轉地址程式------------------------------------------
+
+
+
+    // 定義一個函式，用於從 API 獲取加油站地址並轉換成地理座標後儲存
+    function traffic_information_gasstation() {
+        // 發送 GET 請求獲取加油站資訊
+        $.ajax({
+            type: 'GET',
+            url: 'https://soa.tainan.gov.tw/Api/Service/Get/5a2cfee9-1bcb-41df-a9ad-cc545724fd9b',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (jsondata) {
+                // 使用 $.each 遍歷每個加油站資料
+                $.each(jsondata.data, function (index, value) {
+                    // 解析縣市和區域代碼，並組合地址
+                    var County = County_Code.hasOwnProperty(value.CountyCode) ? County_Code[value.CountyCode] : '';
+                    var District = AreaCode_Code.hasOwnProperty(value.AreaCode) ? AreaCode_Code[value.AreaCode] : '';
+                    var placeName = value.營業主體 + ' ' + value.加油站名稱;
+                    var address = County + District + value.StreetDoorPlate;
+                    // 檢查地址是否存在
+                    if (value.StreetDoorPlate.length > 0) {
+                        // 延遲一段時間後，使用地理編碼 API 處理地址
+                        setTimeout(function () {
+                            $.ajax({
+                                type: 'GET',
+                                url: wsUrl,
+                                data: {
+                                    oAPPId: AppID, //應用程式識別碼(APPId)
+                                    oAPIKey: APIKey, // 應用程式介接驗證碼(APIKey)
+                                    oAddress: address, //所要查詢的門牌位置
+                                    oSRS: 'EPSG:4326', //回傳的坐標系統
+                                    oFuzzyType: "0", //模糊比對的代碼
+                                    oResultDataType: 'JSON', //回傳的資料格式
+                                    oFuzzyBuffer: "0", //模糊比對回傳門牌號的許可誤差範圍
+                                    oIsOnlyFullMatch: "false", //是否只進行完全比對
+                                    oIsSupportPast: "true", //是否顯示舊門牌
+                                    oIsShowCodeBase: "true", //是否顯示統計區資訊
+                                    oIsLockCounty: "false", //是否鎖定縣市
+                                    oIsLockTown: "false", //是否鎖定鄉鎮市區
+                                    oIsLockVillage: "false", //是否鎖定村里
+                                    oIsLockRoadSection: "false", //是否鎖定路段
+                                    oIsLockLane: "false", //是否鎖定巷
+                                    oIsLockAlley: "false", //是否鎖定弄
+                                    oIsLockArea: "false", //是否鎖定地區
+                                    oIsSameNumber_SubNumber: "false", //號之、之號是否視為相同
+                                    oCanIgnoreVillage: "false", //找不時是否可忽略村里
+                                    oCanIgnoreNeighborhood: "false", //找不時是否可忽略鄰
+                                    oReturnMaxCount: "0"//如為多筆時，限制回傳最大筆數
+                                },
+                                dataType: 'xml',
+                                success: function (xmlData) {
+                                    // 解析地理編碼結果，獲取經緯度
+                                    var geoData = $(xmlData).find('string').text();
+                                    var geoJSON = JSON.parse(geoData);
+                                    //var TGOSdata = $.parseJSON($(TGOSdata_html).text());
+                                    // 檢查是否成功解析地址並獲得經緯度
+                                    if (geoJSON && geoJSON.AddressList.length > 0) {
+                                        var X = geoJSON.AddressList[0].X;
+                                        var Y = geoJSON.AddressList[0].Y;
+                                        // 延遲一段時間後，將資訊匯入資料庫
+                                        setTimeout(function () {
+                                            $.ajax({
+                                                type: 'POST',
+                                                url: './api/traffic_information',
+                                                dataType: 'json',
+                                                contentType: 'application/json;charset=utf-8',
+                                                data: JSON.stringify({
+                                                    Large_category: '交通資訊',
+                                                    Medium_category: '加油站',
+                                                    Small_category: value.營業主體,
+                                                    Landmarkname: value.加油站名稱,
+                                                    District: District,
+                                                    Address: address,
+                                                    Tel: value.聯絡電話,
+                                                    X: X,
+                                                    Y: Y
+                                                }), success: function () {
+                                                    console.log("成功匯入到資料庫")
+                                                }, error: function (xhr, status, error) {
+                                                    console.log("資料匯入失敗" + error)
+                                                }
+                                            })
+                                        }, 100)
+                                    } else {
+                                        console.log("無法解析地址")
+                                    }
+                                }
+                            })
+                        }, 120)
+                    } else {
+                        console.log("錯誤")//allgasstation_reverseGeocode(placeName, value)
+                    }
+                })
+            }
+        })
+    }
+
+      //本來要利用googlemap的名稱找加油站地點，但做出來有些跟實際地點有點落差就不先找了
+    /* function allgasstation_reverseGeocode(placeName, value) {
+         var County = County_Code.hasOwnProperty(value.CountyCode) ? County_Code[value.CountyCode] : '';
+         var District = AreaCode_Code.hasOwnProperty(value.AreaCode) ? AreaCode_Code[value.AreaCode] : '';
+         var address = County + District + value.StreetDoorPlate;
+         console.log(placeName)
+         setTimeout(function () {
+             fetch(`https://maps.googleapis.com/maps/api/geocode/json?components=locality:${County}|administrative_area:${District}|address=${encodeURIComponent(placeName)}&key=${API_Key}`)
+                 .then(response => response.json())
+                 .then(data => {
+                     var location = data.results[0].geometry.location;
+                     var X = location.lng;
+                     var Y = location.lat;
+                     setTimeout(function () {
+                         $.ajax({
+                             type: 'POST',
+                             url: './api/traffic_information',
+                             dataType: 'json',
+                             contentType: 'application/json;charset=utf-8',
+                             data: JSON.stringify({
+                                 Large_category: '交通資訊',
+                                 Medium_category: '加油站',
+                                 Small_category: value.營業主體,
+                                 Landmarkname: value.加油站名稱,
+                                 District: District,
+                                 Address: address,
+                                 Tel: value.聯絡電話,
+                                 X: X,
+                                 Y: Y
+                             }), success: function () {
+                                 console.log("成功匯入到資料庫")
+                             }, error: function (xhr, status, error) {
+                                 console.log("資料匯入失敗" + error)
+                             }
+                         })
+                     }, 100)
+                 })
+         },100)
+     }*/
+
+
+
   
 
 
-</head>
+    // 定義一個函式，用於從 API 獲取加氣站地址並轉換成地理座標後儲存
+    function traffic_information_CNGStation() {
+        // 發送 GET 請求獲取加氣站資訊
+        $.ajax({
+            type: 'GET',
+            url: 'https://soa.tainan.gov.tw/Api/Service/Get/265e6a1d-01ef-42c2-b484-6f834c907dd1',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (jsondata) {
+                // 使用 $.each 遍歷每個加油站資料
+                $.each(jsondata.data, function (index, value) {
+                    // 解析縣市和區域代碼，並組合地址
+                    var County = County_Code.hasOwnProperty(value.CountyCode) ? County_Code[value.CountyCode] : '';
+                    var District = AreaCode_Code.hasOwnProperty(value.AreaCode) ? AreaCode_Code[value.AreaCode] : '';
+                    var address = County + District + value.StreetDoorPlate;
+                    // 檢查地址是否存在
+                    if (value.StreetDoorPlate.length > 0) {
+                        // 延遲一段時間後，使用地理編碼 API 處理地址
+                        setTimeout(function () {
+                            $.ajax({
+                                type: 'GET',
+                                url: wsUrl,
+                                data: {
+                                    oAPPId: AppID, //應用程式識別碼(APPId)
+                                    oAPIKey: APIKey, // 應用程式介接驗證碼(APIKey)
+                                    oAddress: address, //所要查詢的門牌位置
+                                    oSRS: 'EPSG:4326', //回傳的坐標系統
+                                    oFuzzyType: "0", //模糊比對的代碼
+                                    oResultDataType: 'JSON', //回傳的資料格式
+                                    oFuzzyBuffer: "0", //模糊比對回傳門牌號的許可誤差範圍
+                                    oIsOnlyFullMatch: "false", //是否只進行完全比對
+                                    oIsSupportPast: "true", //是否顯示舊門牌
+                                    oIsShowCodeBase: "true", //是否顯示統計區資訊
+                                    oIsLockCounty: "false", //是否鎖定縣市
+                                    oIsLockTown: "false", //是否鎖定鄉鎮市區
+                                    oIsLockVillage: "false", //是否鎖定村里
+                                    oIsLockRoadSection: "false", //是否鎖定路段
+                                    oIsLockLane: "false", //是否鎖定巷
+                                    oIsLockAlley: "false", //是否鎖定弄
+                                    oIsLockArea: "false", //是否鎖定地區
+                                    oIsSameNumber_SubNumber: "false", //號之、之號是否視為相同
+                                    oCanIgnoreVillage: "false", //找不時是否可忽略村里
+                                    oCanIgnoreNeighborhood: "false", //找不時是否可忽略鄰
+                                    oReturnMaxCount: "0"//如為多筆時，限制回傳最大筆數
+                                },
+                                dataType: 'xml',
+                                success: function (xmlData) {
+                                    // 解析地理編碼結果，獲取經緯度
+                                    var geoData = $(xmlData).find('string').text();
+                                    var geoJSON = JSON.parse(geoData);
+                                    //var TGOSdata = $.parseJSON($(TGOSdata_html).text());
+                                    // 檢查是否成功解析地址並獲得經緯度
+                                    if (geoJSON && geoJSON.AddressList.length > 0) {
+                                        var X = geoJSON.AddressList[0].X;
+                                        var Y = geoJSON.AddressList[0].Y;
+                                        // 延遲一段時間後，將資訊匯入資料庫
+                                        setTimeout(function () {
+                                            $.ajax({
+                                                type: 'POST',
+                                                url: './api/traffic_information',
+                                                dataType: 'json',
+                                                contentType: 'application/json;charset=utf-8',
+                                                data: JSON.stringify({
+                                                    Large_category: '交通資訊',
+                                                    Medium_category: '加氣站',
+                                                    Small_category: value.營業主體,
+                                                    Landmarkname: value.加氣站名稱,
+                                                    District: District,
+                                                    Address: address,
+                                                    Tel: value.聯絡電話,
+                                                    X: X,
+                                                    Y: Y
+                                                }), success: function () {
+                                                    console.log("成功匯入到資料庫")
+                                                }, error: function (xhr, status, error) {
+                                                    console.log("資料匯入失敗" + error)
+                                                }
+                                            })
+                                        }, 100)
+                                    } else {
+                                        console.log("無法解析地址")
+                                    }
+                                }
+                            })
+                        }, 120)
+                    } else {
+                        console.log("錯誤")//allgasstation_reverseGeocode(placeName, value)
+                    }
+                })
+            }
+        })
+    }
 
-<body>
-  <div id="viewDiv"></div>
 
-</body>
+    // 定義一個函式，用於從 API 獲取公車轉運站資料並匯入資料庫
+    function traffic_information_BusInterchange() {
+        $.ajax({
+            type: 'GET',
+            url: 'https://data.tainan.gov.tw/dataset/63224a5d-8864-4440-b602-6dda51d39a5c/resource/d2f45fea-13f3-4c7a-87c6-baf02f392bfd/download/opendata.json',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (jsondata) {
+                $.each(jsondata, function (index, value) {
+                    // 解析地址以獲取區域
+                    var address = value.地址;
+                    var District = address.split(/[市縣]/)[1].split(/[區]/)[0] + '區';
+                    // 發送 POST 請求以將數據匯入資料庫
+                    $.ajax({
+                        type: 'POST',
+                        url: './api/traffic_information',
+                        dataType: 'json',
+                        contentType: 'application/json;charset=utf-8',
+                        data: JSON.stringify({
+                            Large_category: '交通資訊',
+                            Medium_category: '公車轉運站',
+                            Small_category: '公車轉運站',
+                            Landmarkname: value.站名,
+                            District: District,
+                            Address: address,
+                            Tel: value.電話,
+                            X: value.緯度,//資料來源端的問題 緯度是經度
+                            Y: value.經度 //資料來源端的問題 經度是緯度
+                        }), success: function () {
+                            console.log('成功匯入資料')
+                        }, error: function (xhr, status, error) {
+                            console.log("資料匯入失敗" + error)
+                        }
+                    })
+                })
+            }, error: function (xhr, status, error) {
+                console.log("無法讀取資料" + error)
+            }
+        })
+    }
 
-</html>
+
+
+
+    // 定義一個函式，用於從 API 獲取公車站牌資料並匯入資料庫
+    function traffic_information_BusStopName() {
+        // 使用 jQuery 的 AJAX 方法發送 GET 請求
+        $.ajax({
+            type: 'GET',
+            url: 'https://ptx.transportdata.tw/MOTC/v2/Bus/Stop/City/Tainan?$format=JSON',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (jsondata) {
+                $.each(jsondata, function (index, value) {
+                    var X = value.StopPosition.PositionLon;
+                    var Y = value.StopPosition.PositionLat;
+                    var address = value.StopAddress;
+                    // 從地址中提取行政區域
+                    var District = address.split(/[市縣]/)[1].split(/[區]/)[0] + '區';
+                    // 使用 setTimeout 延遲執行 AJAX POST 請求
+                    setTimeout(function () {
+                        $.ajax({
+                            type: 'POST',
+                            url: './api/traffic_information',
+                            dataType: 'json',
+                            contentType: 'application/json;charset=utf-8',
+                            data: JSON.stringify({
+                                Large_category: '交通資訊',
+                                Medium_category: '公車站牌',
+                                Small_category: '公車站牌',
+                                Landmarkname: value.StopName.Zh_tw,
+                                District: District,
+                                Address: address,
+                                Tel: '',
+                                X: X,
+                                Y: Y
+                            }), success: function () {
+                                console.log("資料已成功匯入")
+                            }, error: function (xhr, status, error) {
+                                console.log("無法讀取資料" + error)
+                            }
+                        })
+                    }, index * 50)
+                })
+            }
+        })
+    }
+
+
+
+    // 定義一個函式，用於從 API 獲取認養及代管空地停車場資料並匯入資料庫
+    function traffic_information_escrowparkinglot() {
+        // 使用 jQuery 的 AJAX 方法發送 GET 請求
+        $.ajax({
+            type: 'GET',
+            url: 'https://data.tainan.gov.tw/dataset/ad9d612e-ece9-459e-8d3d-3307ce13894d/resource/63d805c4-1a27-439c-bd38-9419929c7640/download/opendata.json',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (jsondata) {
+                $.each(jsondata, function (index, value) {
+                    //經度有空白符號導致無法匯入資料庫，利用正則表達處理替換
+                    var X = value.座標_經度.replace(/\s/g, '');
+                    var Y = value.座標_緯度;
+                    var address = value.停車場地址;
+                    setTimeout(function () {
+                        $.ajax({
+                            type: 'POST',
+                            url: './api/traffic_information',
+                            dataType: 'json',
+                            contentType: 'application/json;charset=utf-8',
+                            data: JSON.stringify({
+                                Large_category: '交通資訊',
+                                Medium_category: '停車場',
+                                Small_category: '認養及代管空地停車場',
+                                Landmarkname: value.停車場名稱,
+                                District: value.行政區,
+                                Address: address,
+                                Tel: '',
+                                X: X,
+                                Y: Y
+                            }), success: function () {
+                                console.log("資料已成功匯入")
+                            }, error: function (xhr, status, error) {
+                                console.log("無法讀取資料" + error)
+                            }
+                        })
+                    }, index * 50)
+                })
+            }
+        })
+    }
+
+
+
+
+    // 定義一個函式，用於從 proxy 中獲取臺南市民營停車場資料並匯入資料庫
+    function traffic_information_privateparkinglot() {
+        // 使用 jQuery 的 AJAX 方法發送 GET 請求
+        $.ajax({
+            type: 'GET',  // 請求類型為 GET
+            url: 'https://data.tainan.gov.tw/dataset/private_parking/resource/5760b98b-8258-4bf9-ab35-76fd0657d443/proxy',  // 請求的 URL
+            dataType: 'xml',  // 響應的數據類型為 XML 格式
+            success: function (xmlData) {
+                // 當請求成功時執行的函式，處理從 proxy 取得的 XML 資料
+                var elements = $(xmlData).find('parking');  // 找到 XML 中所有 'parking' 元素
+                elements.each(function (index, element) {
+                    // 逐一處理每個 'parking' 元素
+                    var Landmarkname = $(element).find('停車場名稱').text();  // 提取停車場名稱
+                    var [Y, X] = $(element).find('經緯度').text().split('，', 2);  // 提取並分割經緯度
+                    var address = $(element).find('停車場地址').text();  // 提取停車場地址
+                    var Tel = $(element).find('停車場電話').text();  // 提取停車場電話
+                    var District = $(element).find('停車場地址').text().split(/[市,縣]/)[1].split(/[區]/)[0] + '區';  // 提取行政區
+                    setTimeout(function () {
+                        // 使用 AJAX 發送 POST 請求，將處理後的資料匯入資料庫
+                        $.ajax({
+                            type: 'POST',  // 請求類型為 POST
+                            url: './api/traffic_information',  // POST 請求的 URL
+                            dataType: 'json',  // 響應的數據類型為 JSON 格式
+                            contentType: 'application/json;charset=utf-8',  // 請求的內容類型為 JSON
+                            data: JSON.stringify({
+                                // 使用處理後的資料組成 JSON 物件
+                                Large_category: '交通資訊',
+                                Medium_category: '停車場',
+                                Small_category: '民營停車場',
+                                Landmarkname: Landmarkname,
+                                District: District,
+                                Address: address,
+                                Tel: Tel,
+                                X: X,
+                                Y: Y
+                            }),
+                            success: function () {
+                                console.log("資料已成功匯入");  // 資料匯入成功時輸出訊息
+                            },
+                            error: function (xhr, status, error) {
+                                console.log("無法讀取資料" + error);  // 資料匯入失敗時輸出錯誤訊息
+                            }
+                        });
+                    }, index * 50);  // 使用定時器以分段方式處理每個 'parking' 元素
+                });
+            }
+        });
+    }
+
+
+
+
+    // 定義一個函式，用於從 API 獲取公有收費停車場資料並匯入資料庫
+    function traffic_information_publicpaidparkinglot() {
+        // 使用 jQuery 的 AJAX 方法發送 GET 請求
+        $.ajax({
+            type: 'GET',
+            url: 'https://data.tainan.gov.tw/dataset/public_toll_parking/resource/dc661470-ca93-4e90-a41a-faf0e2635517/proxy',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (jsondata) {
+                $.each(jsondata, function (index, value) {
+                    var Landmarkname = value.停車場名稱;
+                    // 獲取經緯度並分割
+                    var [Y, X] = value.經緯度.split(/，/g, 2);
+                    var address = value.停車場地址;
+                    // 從地址中提取行政區域
+                    var District = address.split(/[市縣]/)[1].split(/[區]/)[0] + '區';
+                    // 使用 setTimeout 延遲執行 AJAX POST 請求，以避免過多的連續請求
+                    setTimeout(function () {
+                        $.ajax({
+                            type: 'POST',
+                            url: './api/traffic_information',
+                            dataType: 'json',
+                            contentType: 'application/json;charset=utf-8',
+                            data: JSON.stringify({
+                                Large_category: '交通資訊',
+                                Medium_category: '停車場',
+                                Small_category: value.停車場型態,
+                                Landmarkname: Landmarkname,
+                                District: District,
+                                Address: address,
+                                Tel: value.停車場電話,
+                                X: X,
+                                Y: Y
+                            }), success: function () {
+                                console.log("資料已成功匯入")
+                            }, error: function (xhr, status, error) {
+                                console.log("無法讀取資料" + error)
+                            }
+                        })
+                    }, index * 50)
+                })
+            }, error: function (xhr, status, error) {
+                console.log("無法讀取資料" + error)
+            }
+        })
+    }
+
+
+
+
+    // 定義一個函式，用於從 API 獲取公有免費停車場資料並匯入資料庫
+    function traffic_information_publicfreeparkinglot() {
+        // 使用 jQuery 的 AJAX 方法發送 GET 請求
+        $.ajax({
+            type: 'GET',
+            url: 'https://data.tainan.gov.tw/dataset/public_free_parking/resource/27234516-7820-4d86-8877-579151b2ce9c/proxy',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (jsondata) {
+                $.each(jsondata, function (index, value) {
+                    var Landmarkname = value.停車場名稱;
+                    // 獲取經緯度並分割
+                    var [Y, X] = value.經緯度.split(/，/g, 2);
+                    var address = value.停車場地址;
+                    // 從地址中提取行政區域
+                    var District = address.split(/[市縣]/)[1].split(/[區]/)[0] + '區';
+                    // 使用 setTimeout 延遲執行 AJAX POST 請求，以避免過多的連續請求
+                    setTimeout(function () {
+                        $.ajax({
+                            type: 'POST',
+                            url: './api/traffic_information',
+                            dataType: 'json',
+                            contentType: 'application/json;charset=utf-8',
+                            data: JSON.stringify({
+                                Large_category: '交通資訊',
+                                Medium_category: '停車場',
+                                Small_category: value.停車場型態,
+                                Landmarkname: Landmarkname,
+                                District: District,
+                                Address: address,
+                                Tel: value.停車場電話,
+                                X: X,
+                                Y: Y
+                            }), success: function () {
+                                console.log("資料已成功匯入")
+                            }, error: function (xhr, status, error) {
+                                console.log("無法讀取資料" + error)
+                            }
+                        })
+                    }, index * 50)
+                })
+            }, error: function (xhr, status, error) {
+                console.log("無法讀取資料" + error)
+            }
+        })
+    }
+
+
+
+
+
+    // 定義一個函式，用於從 API 獲取路邊身障停車格資料並匯入資料庫
+    function traffic_information_disabledparkingspace() {
+        // 使用 jQuery 的 AJAX 方法發送 GET 請求
+        $.ajax({
+            type: 'GET',
+            url: 'https://data.tainan.gov.tw/dataset/handicap_parking/resource/40d4be42-2b47-4884-9a74-0f34ef490491/proxy',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (jsondata) {
+                $.each(jsondata, function (index, value) {
+                    // 獲取經緯度並分割
+                    var [Y, X] = value.經緯度.split('，', 2);
+                    var Landmarkname = value.停車場代碼;
+                    var District = value.行政區;
+                    var address = value.地點;
+                    // 使用 setTimeout 延遲執行 AJAX POST 請求，以避免過多的連續請求
+                    setTimeout(function () {
+                        $.ajax({
+                            type: 'POST',
+                            url: './api/traffic_information',
+                            dataType: 'json',
+                            contentType: 'application/json;charset=utf-8',
+                            data: JSON.stringify({
+                                Large_category: '交通資訊',
+                                Medium_category: '停車場',
+                                Small_category: '路邊身障停車格',
+                                Landmarkname: Landmarkname,
+                                District: District,
+                                Address: address,
+                                Tel: '', // 暫無電話資訊
+                                X: X,
+                                Y: Y
+                            }), success: function () {
+                                console.log("資料已成功匯入")
+                            }, error: function (xhr, status, error) {
+                                console.log("無法讀取資料" + error)
+                            }
+                        })
+                    }, index * 100) // 使用定時器以分段方式處理每筆停車格資料
+                })
+            }, error: function (xhr, status, error) {
+                console.log("無法讀取資料" + error)
+            }
+        })
+    }
+
+
+    // 定義一個函式，用於從 API 獲取路邊路邊收費停車格資料並匯入資料庫
+    function traffic_information_paidparkingspace() {
+        $.ajax({
+            type: 'GET',
+            url: 'https://data.tainan.gov.tw/api/3/action/datastore_search?resource_id=d6ea56e6-403b-4b42-ab8f-6ed66ff66058&limit=5000',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (jsondata) {
+                var data = jsondata.result.records;
+                $.each(data, function (index, value) {
+                    var [Y, X] = value.經緯度.split('，', 2);
+                    var Landmarkname = value.停車場名稱;
+                    var address = value.停車場地址;
+                    setTimeout(function () {
+                        $.ajax({
+                            type: 'POST',
+                            url: './api/traffic_information',
+                            dataType: 'json',
+                            contentType: 'application/json;charset=utf-8',
+                            data: JSON.stringify({
+                                Large_category: '交通資訊',
+                                Medium_category: '停車場',
+                                Small_category: '路邊收費停車格',
+                                Landmarkname: Landmarkname,
+                                District: '',
+                                Address: address,
+                                Tel: '',
+                                X: X,
+                                Y: Y
+                            }), success: function () {
+                                console.log("資料已成功匯入")
+                            }, error: function (xhr, status, error) {
+                                console.log("無法讀取資料" + error)
+                            }
+                        })
+                    }, index * 100)
+                })
+            }, error: function (xhr, status, error) {
+                console.log("無法讀取資料" + error)
+            }
+        })
+    }
+
+
+    // 在文件載入完成後執行
+    $(document).ready(function () {
+        // 綁定按鈕點擊事件，觸發 importalldata_traffic_information 函式
+        $('#importalldata_traffic_information').click(function () {
+            traffic_information_gasstation();
+            traffic_information_CNGStation();
+            traffic_information_BusInterchange();
+            traffic_information_BusStopName();
+            traffic_information_escrowparkinglot();
+            traffic_information_privateparkinglot();
+            traffic_information_disabledparkingspace();
+            traffic_information_publicpaidparkinglot();
+            traffic_information_publicfreeparkinglot();
+            traffic_information_paidparkingspace();
+        });
+
+        // 綁定按鈕點擊事件，觸發 traffic_information_gasstation 函式
+        $('#traffic_information_gasstation').click(function () {
+            traffic_information_gasstation();
+        });
+        // 綁定按鈕點擊事件，觸發 traffic_information_CNGStation 函式
+        $('#traffic_information_CNGStation').click(function () {
+            traffic_information_CNGStation();
+        });
+        // 綁定按鈕點擊事件，觸發 traffic_information_BusInterchange 函式
+        $('#traffic_information_BusInterchange').click(function () {
+            traffic_information_BusInterchange();
+        });
+        // 綁定按鈕點擊事件，觸發 traffic_information_BusStopName 函式
+        $('#traffic_information_BusStopName').click(function () {
+            traffic_information_BusStopName();
+        });
+        // 綁定按鈕點擊事件，觸發 traffic_information_escrowparkinglot 函式
+        $('#traffic_information_escrowparkinglot').click(function () {
+            traffic_information_escrowparkinglot();
+        });
+        // 綁定按鈕點擊事件，觸發 traffic_information_privateparkinglot 函式
+        $('#traffic_information_privateparkinglot').click(function () {
+            traffic_information_privateparkinglot();  // 點擊按鈕後觸發函式
+        });
+
+        // 綁定按鈕點擊事件，觸發 traffic_information_disabledparkingspace 函式
+        $('#traffic_information_disabledparkingspace').click(function () {
+            traffic_information_disabledparkingspace();
+        });
+        // 綁定按鈕點擊事件，觸發 traffic_information_publicPaidparkinglot 函式
+        $('#traffic_information_publicpaidparkinglot').click(function () {
+            traffic_information_publicpaidparkinglot();
+        });
+        // 綁定按鈕點擊事件，觸發 traffic_information_publicfreeparkinglot 函式
+        $('#traffic_information_publicfreeparkinglot').click(function () {
+            traffic_information_publicfreeparkinglot();
+        });
+        // 綁定按鈕點擊事件，觸發 traffic_information_paidparkingspace 函式
+        $('#traffic_information_paidparkingspace').click(function () {
+            traffic_information_paidparkingspace();
+        });
+    });
+
+
+
+    //-------------------------------------這是公共設施的程式碼----------------------------------------------------------------------
+
+    function public_infrastructure_park() {
+        // 發起第一個 AJAX 請求，獲取公園資料
+        $.ajax({
+            type: 'GET',
+            url: 'https://soa.tainan.gov.tw/Api/Service/Get/7ed7d9a6-92f8-4897-947f-e18b19345f9e',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (jsondata1) {
+                console.log(jsondata1.data);
+                // 從公園資料中擷取所需的屬性，建立新的 parkdata 陣列
+                var parkdata = jsondata1.data.map(function (item) {
+                    return {
+                        X: item.X座標,
+                        Y: item.Y座標,
+                        District: item.所在轄區,
+                        Address: item.座落位置,
+                        Landmarkname: item.公園名稱,
+                        Small_category: item.類別
+                    };
+                });
+
+                // 發起第二個 AJAX 請求，獲取特色公園資料
+                $.ajax({
+                    type: 'GET',
+                    url: 'https://soa.tainan.gov.tw/Api/Service/Get/91b1d113-4b5d-498d-bebd-4c6df2d218bd',
+                    dataType: 'json',
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (jsondata2) {
+                        console.log(jsondata2)
+                        // 從特色公園資料中擷取所需的屬性，建立新的 featureparkdata 陣列
+                        var featureparkdata = jsondata2.data.map(item => {
+                            return {
+                                X: item.經度,
+                                Y: item.緯度,
+                                District: item.行政區,
+                                Address: item.座落位置,
+                                Landmarkname: item.公園名稱,
+                                Small_category: '特色公園'
+                            }
+                        });
+                        // 將兩個資料陣列合併成一個 mergeparkdata 陣列
+                        var mergeparkdata = parkdata.concat(featureparkdata);
+                        // 逐一處理 mergeparkdata 陣列中的每個資料項目
+                        $.each(mergeparkdata, function (index, value) {
+                            console.log(value)
+                            // 使用定時器以每 50 毫秒的間隔處理資料項目
+                            setTimeout(function () {
+                                // 發起 POST 請求，將處理後的資料項目匯入 API
+                                $.ajax({
+                                    type: 'POST',
+                                    url: './api/public_infrastructure',
+                                    dataType: 'json',
+                                    data: JSON.stringify({
+                                        Large_category: '公共設施',
+                                        Medium_category: '公園',
+                                        Small_category: value.Small_category,
+                                        Landmarkname: value.Landmarkname,
+                                        District: value.District,
+                                        Address: value.Address,
+                                        Tel: '',
+                                        X: value.X,
+                                        Y: value.Y
+                                    }),
+                                    contentType: 'application/json;charset=utf-8',
+                                    success: function () {
+                                        console.log('成功匯入')
+                                    }, error: function (xhr, status, error) {
+                                        console.log("無法讀取資料" + error)
+                                    }
+                                })
+                            }, index * 50)
+                        })
+                    }, error: function (xhr, status, error) {
+                        console.log("無法讀取資料" + error)
+                    }
+                })
+            }, error: function (xhr, status, error) {
+                console.log("無法讀取資料" + error)
+            }
+        })
+    }
+
+
+
+    function public_infrastructure_library() {
+        $.ajax({
+            type: 'GET',
+            url: 'https://data.tainan.gov.tw/api/3/action/datastore_search?resource_id=0c02d152-7091-4316-9880-43f13a9243ac',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (jsondata) {
+                var data = jsondata.result.records;
+                $.each(data, function (index, value) {
+                    //將TWD97座標轉成經緯度，套入公式
+                    var $x = value.X坐標;
+                    var $y = value.Y坐標;
+                    var result = twd97_to_latlng($x, $y);
+                    var District = value.地址.split(/[縣市]/)[1].split(/[區]/)[0] + '區'
+                    // 使用定時器以每 50 毫秒的間隔處理資料項目
+                    setTimeout(function () {
+                        // 發起 POST 請求，將處理後的資料項目匯入 API
+                        $.ajax({
+                            type: 'POST',
+                            url: './api/public_infrastructure',
+                            dataType: 'json',
+                            data: JSON.stringify({
+                                Large_category: '公共設施',
+                                Medium_category: '圖書館',
+                                Small_category: '圖書館',
+                                Landmarkname: value.館別,
+                                District: District,
+                                Address: value.地址,
+                                Tel: '',
+                                X: result.X,
+                                Y: result.Y
+                            }),
+                            contentType: 'application/json;charset=utf-8',
+                            success: function () {
+                                console.log('成功匯入')
+                            }, error: function (xhr, status, error) {
+                                console.log("無法讀取資料" + error)
+                            }
+                        })
+                    }, index * 50)
+                })
+            }, error: function (xhr, status, error) {
+                console.log("資料提取失敗" + error)
+            }
+        })
+    }
+
+
+
+    function public_infrastructure_publicmarket() {
+        $.ajax({
+            type: 'GET',
+            url: 'https://data.tainan.gov.tw/api/3/action/datastore_search?resource_id=51e14c7f-8292-4816-98c2-23be1c2a0abf',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (jsondata) {
+                var data = jsondata.result.records;
+                $.each(data, function (index, value) {
+                    var address = value.地址;
+                    console.log(address);
+                    setTimeout(function () {
+                        $.ajax({
+                            type: 'GET',
+                            url: wsUrl,
+                            data: {
+                                oAPPId: AppID, //應用程式識別碼(APPId)
+                                oAPIKey: APIKey, // 應用程式介接驗證碼(APIKey)
+                                oAddress: address, //所要查詢的門牌位置
+                                oSRS: 'EPSG:4326', //回傳的坐標系統
+                                oFuzzyType: "0", //模糊比對的代碼
+                                oResultDataType: 'JSON', //回傳的資料格式
+                                oFuzzyBuffer: "0", //模糊比對回傳門牌號的許可誤差範圍
+                                oIsOnlyFullMatch: "false", //是否只進行完全比對
+                                oIsSupportPast: "true", //是否顯示舊門牌
+                                oIsShowCodeBase: "true", //是否顯示統計區資訊
+                                oIsLockCounty: "false", //是否鎖定縣市
+                                oIsLockTown: "false", //是否鎖定鄉鎮市區
+                                oIsLockVillage: "false", //是否鎖定村里
+                                oIsLockRoadSection: "false", //是否鎖定路段
+                                oIsLockLane: "false", //是否鎖定巷
+                                oIsLockAlley: "false", //是否鎖定弄
+                                oIsLockArea: "false", //是否鎖定地區
+                                oIsSameNumber_SubNumber: "false", //號之、之號是否視為相同
+                                oCanIgnoreVillage: "false", //找不時是否可忽略村里
+                                oCanIgnoreNeighborhood: "false", //找不時是否可忽略鄰
+                                oReturnMaxCount: "0"//如為多筆時，限制回傳最大筆數
+                            }, dataType: 'xml'
+                            , success: function (geodata) {
+                                console.log(geodata)
+                                var data = $(geodata).find('string').text();
+                                var geoJSON = JSON.parse(data);
+                                if (geodata && geoJSON.AddressList.length > 0) {
+                                    var X = geoJSON.AddressList[0].X;
+                                    var Y = geoJSON.AddressList[0].Y;
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: './api/public_infrastructure',
+                                        dataType: 'json',
+                                        data: JSON.stringify({
+                                            Large_category: '公共設施',
+                                            Medium_category: '市場',
+                                            Small_category: '公有零售市場',
+                                            Landmarkname: value.市集名稱,
+                                            District: value.區別,
+                                            Address: value.地址,
+                                            Tel: '',
+                                            X: X,
+                                            Y: Y
+                                        }),
+                                        contentType: 'application/json;charset=utf-8',
+                                        success: function () {
+                                            console.log('成功匯入')
+                                        }, error: function (xhr, status, error) {
+                                            console.log("無法讀取資料" + error)
+                                        }
+                                    })
+                                } else {
+                                    console.log("無法解析地址")
+                                }
+                            }, error: function (xhr, status, error) {
+                                console.log("資料匯入失敗" + error)
+                            }
+                        })
+                    }, index * 50)
+                })
+            }, error: function (xhr, status, error) {
+                console.log("資料匯入失敗")
+            }
+        })
+    }
+
+    // 定義一個函式，用於從開放資料平台獲取民有市場資料並匯入資料庫
+    function public_infrastructure_privatemarket() {
+        $.ajax({
+            type: 'GET',
+            url: 'https://data.tainan.gov.tw/api/3/action/datastore_search?resource_id=188b191c-c9bf-438a-9bda-a5fbc3ce6a53',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (jsondata) {
+                var data = jsondata.result.records;
+                // 使用 $.each() 方法遍歷每個資料項
+                $.each(data, function (index, value) {
+                    // 建立完整的地址字串
+                    var address = '台南市' + value.行政區 + value.地點;
+                    console.log(address);
+                    setTimeout(function () {
+                        $.ajax({
+                            type: 'GET',
+                            url: wsUrl,
+                            data: {
+                                oAPPId: AppID, //應用程式識別碼(APPId)
+                                oAPIKey: APIKey, // 應用程式介接驗證碼(APIKey)
+                                oAddress: address, //所要查詢的門牌位置
+                                oSRS: 'EPSG:4326', //回傳的坐標系統
+                                oFuzzyType: "0", //模糊比對的代碼
+                                oResultDataType: 'JSON', //回傳的資料格式
+                                oFuzzyBuffer: "0", //模糊比對回傳門牌號的許可誤差範圍
+                                oIsOnlyFullMatch: "false", //是否只進行完全比對
+                                oIsSupportPast: "true", //是否顯示舊門牌
+                                oIsShowCodeBase: "true", //是否顯示統計區資訊
+                                oIsLockCounty: "false", //是否鎖定縣市
+                                oIsLockTown: "false", //是否鎖定鄉鎮市區
+                                oIsLockVillage: "false", //是否鎖定村里
+                                oIsLockRoadSection: "false", //是否鎖定路段
+                                oIsLockLane: "false", //是否鎖定巷
+                                oIsLockAlley: "false", //是否鎖定弄
+                                oIsLockArea: "false", //是否鎖定地區
+                                oIsSameNumber_SubNumber: "false", //號之、之號是否視為相同
+                                oCanIgnoreVillage: "false", //找不時是否可忽略村里
+                                oCanIgnoreNeighborhood: "false", //找不時是否可忽略鄰
+                                oReturnMaxCount: "0"//如為多筆時，限制回傳最大筆數
+                            }, dataType: 'xml'
+                            , success: function (geodata) {
+                                console.log(geodata)
+                                var data = $(geodata).find('string').text();
+                                var geoJSON = JSON.parse(data);
+                                // 檢查解析後的資料是否存在
+                                if (geodata && geoJSON.AddressList.length > 0) {
+                                    // 提取經緯度資訊
+                                    var X = geoJSON.AddressList[0].X;
+                                    var Y = geoJSON.AddressList[0].Y;
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: './api/public_infrastructure',
+                                        dataType: 'json',
+                                        data: JSON.stringify({
+                                            Large_category: '公共設施',
+                                            Medium_category: '市場',
+                                            Small_category: '民有市場',
+                                            Landmarkname: value.市場名稱,
+                                            District: value.行政區,
+                                            Address: address,
+                                            Tel: '',
+                                            X: X,
+                                            Y: Y
+                                        }),
+                                        contentType: 'application/json;charset=utf-8',
+                                        success: function () {
+                                            console.log('成功匯入')
+                                        }, error: function (xhr, status, error) {
+                                            console.log("無法讀取資料" + error)
+                                        }
+                                    })
+                                } else {
+                                    console.log("無法解析地址")
+                                }
+                            }, error: function (xhr, status, error) {
+                                console.log("資料匯入失敗" + error)
+                            }
+                        })
+                    }, index * 50)// 設定延遲時間，以便順序執行
+                })
+            }, error: function (xhr, status, error) {
+                console.log("資料匯入失敗")
+            }
+        })
+    }
+
+
+
+    // 定義一個函式，用於從 API 獲取政府體育場館資料並匯入資料庫
+    function public_infrastructure_governmentstadium() {
+        $.ajax({
+            type: 'GET',
+            url: 'https://soa.tainan.gov.tw/Api/Service/Get/21308ec5-2a90-4526-b053-19617be7bca5',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (jsondata) {
+                var data = jsondata.data;
+                console.log(data)
+                // 使用 $.each() 方法遍歷每個資料項
+                $.each(data, function (index, value) {
+                    // 建立完整的地址字串
+                    var District = AreaCode_Code.hasOwnProperty(value.AreaCode) ? AreaCode_Code[value.AreaCode] : '';
+                    var County = County_Code.hasOwnProperty(value.CountyCode) ? County_Code[value.CountyCode] : '';
+                    var address = County + District + value.StreetDoorPlate;
+                    setTimeout(function () {
+                        $.ajax({
+                            type: 'GET',
+                            url: wsUrl,
+                            data: {
+                                oAPPId: AppID, //應用程式識別碼(APPId)
+                                oAPIKey: APIKey, // 應用程式介接驗證碼(APIKey)
+                                oAddress: address, //所要查詢的門牌位置
+                                oSRS: 'EPSG:4326', //回傳的坐標系統
+                                oFuzzyType: "0", //模糊比對的代碼
+                                oResultDataType: 'JSON', //回傳的資料格式
+                                oFuzzyBuffer: "0", //模糊比對回傳門牌號的許可誤差範圍
+                                oIsOnlyFullMatch: "false", //是否只進行完全比對
+                                oIsSupportPast: "true", //是否顯示舊門牌
+                                oIsShowCodeBase: "true", //是否顯示統計區資訊
+                                oIsLockCounty: "false", //是否鎖定縣市
+                                oIsLockTown: "false", //是否鎖定鄉鎮市區
+                                oIsLockVillage: "false", //是否鎖定村里
+                                oIsLockRoadSection: "false", //是否鎖定路段
+                                oIsLockLane: "false", //是否鎖定巷
+                                oIsLockAlley: "false", //是否鎖定弄
+                                oIsLockArea: "false", //是否鎖定地區
+                                oIsSameNumber_SubNumber: "false", //號之、之號是否視為相同
+                                oCanIgnoreVillage: "false", //找不時是否可忽略村里
+                                oCanIgnoreNeighborhood: "false", //找不時是否可忽略鄰
+                                oReturnMaxCount: "0"//如為多筆時，限制回傳最大筆數
+                            }, dataType: 'xml'
+                            , success: function (geodata) {
+                                console.log(geodata)
+                                var data = $(geodata).find('string').text();
+                                var geoJSON = JSON.parse(data);
+                                // 檢查解析後的資料是否存在
+                                if (geodata && geoJSON.AddressList.length > 0) {
+                                    // 提取經緯度資訊
+                                    var X = geoJSON.AddressList[0].X;
+                                    var Y = geoJSON.AddressList[0].Y;
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: './api/public_infrastructure',
+                                        dataType: 'json',
+                                        data: JSON.stringify({
+                                            Large_category: '公共設施',
+                                            Medium_category: '體育處所屬體育場館',
+                                            Small_category: '體育處所屬體育場館',
+                                            Landmarkname: value.場館名稱,
+                                            District: District,
+                                            Address: address,
+                                            Tel: value.連絡電話,
+                                            X: X,
+                                            Y: Y
+                                        }),
+                                        contentType: 'application/json;charset=utf-8',
+                                        success: function () {
+                                            console.log('成功匯入')
+                                        }, error: function (xhr, status, error) {
+                                            console.log("無法讀取資料" + error)
+                                        }
+                                    })
+                                } else {
+                                    console.log("無法解析地址，故不匯入資料庫")
+                                }
+                            }, error: function (xhr, status, error) {
+                                console.log("資料匯入失敗" + error)
+                            }
+                        })
+                    }, index * 50)// 設定延遲時間，以便順序執行
+                })
+            }, error: function (xhr, status, error) {
+                console.log("資料匯入失敗")
+            }
+        })
+    }
+
+
+    // 定義一個函式，用於從 API 獲取政府體育場館資料並匯入資料庫
+    function public_infrastructure_schoolswimmingpool() {
+        $.ajax({
+            type: 'GET',
+            url: 'https://soa.tainan.gov.tw/Api/Service/Get/c4e579fe-462e-41d4-9f8e-63600e2bf790',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (jsondata) {
+                var data = jsondata.data;
+                console.log(data)
+                // 使用 $.each() 方法遍歷每個資料項
+                $.each(data, function (index, value) {
+                    // 建立完整的地址字串
+                    var District = AreaCode_Code.hasOwnProperty(value.AreaCode) ? AreaCode_Code[value.AreaCode] : '';
+                    var County = County_Code.hasOwnProperty(value.CountyCode) ? County_Code[value.CountyCode] : '';
+                    var address = County + District + value.StreetDoorPlate;
+                    console.log(address)
+                    setTimeout(function () {
+                        $.ajax({
+                            type: 'GET',
+                            url: wsUrl,
+                            data: {
+                                oAPPId: AppID, //應用程式識別碼(APPId)
+                                oAPIKey: APIKey, // 應用程式介接驗證碼(APIKey)
+                                oAddress: address, //所要查詢的門牌位置
+                                oSRS: 'EPSG:4326', //回傳的坐標系統
+                                oFuzzyType: "0", //模糊比對的代碼
+                                oResultDataType: 'JSON', //回傳的資料格式
+                                oFuzzyBuffer: "0", //模糊比對回傳門牌號的許可誤差範圍
+                                oIsOnlyFullMatch: "false", //是否只進行完全比對
+                                oIsSupportPast: "true", //是否顯示舊門牌
+                                oIsShowCodeBase: "true", //是否顯示統計區資訊
+                                oIsLockCounty: "false", //是否鎖定縣市
+                                oIsLockTown: "false", //是否鎖定鄉鎮市區
+                                oIsLockVillage: "false", //是否鎖定村里
+                                oIsLockRoadSection: "false", //是否鎖定路段
+                                oIsLockLane: "false", //是否鎖定巷
+                                oIsLockAlley: "false", //是否鎖定弄
+                                oIsLockArea: "false", //是否鎖定地區
+                                oIsSameNumber_SubNumber: "false", //號之、之號是否視為相同
+                                oCanIgnoreVillage: "false", //找不時是否可忽略村里
+                                oCanIgnoreNeighborhood: "false", //找不時是否可忽略鄰
+                                oReturnMaxCount: "0"//如為多筆時，限制回傳最大筆數
+                            }, dataType: 'xml'
+                            , success: function (geodata) {
+                                console.log(geodata)
+                                var data = $(geodata).find('string').text();
+                                var geoJSON = JSON.parse(data);
+                                // 檢查解析後的資料是否存在
+                                if (geodata && geoJSON.AddressList.length > 0) {
+                                    // 提取經緯度資訊
+                                    var X = geoJSON.AddressList[0].X;
+                                    var Y = geoJSON.AddressList[0].Y;
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: './api/public_infrastructure',
+                                        dataType: 'json',
+                                        data: JSON.stringify({
+                                            Large_category: '公共設施',
+                                            Medium_category: '各級學校游泳池',
+                                            Small_category: value.游泳池類型,
+                                            Landmarkname: value.游泳池管理單位,
+                                            District: District,
+                                            Address: address,
+                                            Tel: value.連絡電話,
+                                            X: X,
+                                            Y: Y
+                                        }),
+                                        contentType: 'application/json;charset=utf-8',
+                                        success: function () {
+                                            console.log('成功匯入')
+                                        }, error: function (xhr, status, error) {
+                                            console.log("無法讀取資料" + error)
+                                        }
+                                    })
+                                } else {
+                                    console.log("無法解析地址，故不匯入資料庫")
+                                }
+                            }, error: function (xhr, status, error) {
+                                console.log("資料匯入失敗" + error)
+                            }
+                        })
+                    }, index * 50)// 設定延遲時間，以便順序執行
+                })
+            }, error: function (xhr, status, error) {
+                console.log("資料匯入失敗")
+            }
+        })
+    }
+
+
+
+    // 定義一個函式，用於從 API 獲取民營運動場館資料並匯入資料庫
+    function public_infrastructure_privatesportsarena() {
+        $.ajax({
+            type: 'GET',
+            url: 'https://soa.tainan.gov.tw/Api/Service/Get/845e23eb-8099-45cf-9e14-e4e7955b1416',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (jsondata) {
+                var data = jsondata.data;
+                console.log(data)
+                // 使用 $.each() 方法遍歷每個資料項
+                $.each(data, function (index, value) {
+                    // 建立完整的地址字串
+                    var District = AreaCode_Code.hasOwnProperty(value.AreaCode) ? AreaCode_Code[value.AreaCode] : '';
+                    var County = County_Code.hasOwnProperty(value.CountyCode) ? County_Code[value.CountyCode] : '';
+                    var address = County + District + value.StreetDoorPlate;
+                    console.log(address)
+                    setTimeout(function () {
+                        $.ajax({
+                            type: 'GET',
+                            url: wsUrl,
+                            data: {
+                                oAPPId: AppID, //應用程式識別碼(APPId)
+                                oAPIKey: APIKey, // 應用程式介接驗證碼(APIKey)
+                                oAddress: address, //所要查詢的門牌位置
+                                oSRS: 'EPSG:4326', //回傳的坐標系統
+                                oFuzzyType: "0", //模糊比對的代碼
+                                oResultDataType: 'JSON', //回傳的資料格式
+                                oFuzzyBuffer: "0", //模糊比對回傳門牌號的許可誤差範圍
+                                oIsOnlyFullMatch: "false", //是否只進行完全比對
+                                oIsSupportPast: "true", //是否顯示舊門牌
+                                oIsShowCodeBase: "true", //是否顯示統計區資訊
+                                oIsLockCounty: "false", //是否鎖定縣市
+                                oIsLockTown: "false", //是否鎖定鄉鎮市區
+                                oIsLockVillage: "false", //是否鎖定村里
+                                oIsLockRoadSection: "false", //是否鎖定路段
+                                oIsLockLane: "false", //是否鎖定巷
+                                oIsLockAlley: "false", //是否鎖定弄
+                                oIsLockArea: "false", //是否鎖定地區
+                                oIsSameNumber_SubNumber: "false", //號之、之號是否視為相同
+                                oCanIgnoreVillage: "false", //找不時是否可忽略村里
+                                oCanIgnoreNeighborhood: "false", //找不時是否可忽略鄰
+                                oReturnMaxCount: "0"//如為多筆時，限制回傳最大筆數
+                            }, dataType: 'xml'
+                            , success: function (geodata) {
+                                console.log(geodata)
+                                var data = $(geodata).find('string').text();
+                                var geoJSON = JSON.parse(data);
+                                // 檢查解析後的資料是否存在
+                                if (geodata && geoJSON.AddressList.length > 0) {
+                                    // 提取經緯度資訊
+                                    var X = geoJSON.AddressList[0].X;
+                                    var Y = geoJSON.AddressList[0].Y;
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: './api/public_infrastructure',
+                                        dataType: 'json',
+                                        data: JSON.stringify({
+                                            Large_category: '公共設施',
+                                            Medium_category: '民營運動場館',
+                                            Small_category: value.經營型態,
+                                            Landmarkname: value.場館名稱,
+                                            District: District,
+                                            Address: address,
+                                            Tel: value.連絡電話,
+                                            X: X,
+                                            Y: Y
+                                        }),
+                                        contentType: 'application/json;charset=utf-8',
+                                        success: function () {
+                                            console.log('成功匯入')
+                                        }, error: function (xhr, status, error) {
+                                            console.log("無法讀取資料" + error)
+                                        }
+                                    })
+                                } else {
+                                    console.log("無法解析地址，故不匯入資料庫")
+                                }
+                            }, error: function (xhr, status, error) {
+                                console.log("資料匯入失敗" + error)
+                            }
+                        })
+                    }, index * 50)// 設定延遲時間，以便順序執行
+                })
+            }, error: function (xhr, status, error) {
+                console.log("資料匯入失敗")
+            }
+        })
+    }
+
+
+
+
+
+    // 在文件載入完成後執行
+    $(document).ready(function () {
+        // 綁定按鈕點擊事件，觸發 importalldata_public_infrastructure 函式
+        $('#importalldata_public_infrastructure').click(function () {
+            public_infrastructure_park();
+            public_infrastructure_library();
+            public_infrastructure_publicmarket();
+            public_infrastructure_privatemarket();
+            public_infrastructure_governmentstadium();
+            public_infrastructure_schoolswimmingpool();
+            public_infrastructure_privatesportsarena();
+        })
+
+
+        // 綁定按鈕點擊事件，觸發 public_infrastructure_park 函式
+        $('#public_infrastructure_park').click(function () {
+            public_infrastructure_park();
+        });
+
+        // 綁定按鈕點擊事件，觸發 public_infrastructure_library 函式
+        $('#public_infrastructure_library').click(function () {
+            public_infrastructure_library();
+        });
+
+        // 綁定按鈕點擊事件，觸發 public_infrastructure_publicmarket 函式
+        $('#public_infrastructure_publicmarket').click(function () {
+            public_infrastructure_publicmarket();
+        });
+
+        // 綁定按鈕點擊事件，觸發 public_infrastructure_privatemarket 函式
+        $('#public_infrastructure_privatemarket').click(function () {
+            public_infrastructure_privatemarket();
+        });
+
+        // 綁定按鈕點擊事件，觸發 public_infrastructure_governmentstadium 函式
+        $('#public_infrastructure_governmentstadium').click(function () {
+            public_infrastructure_governmentstadium();
+        });
+
+        // 綁定按鈕點擊事件，觸發 public_infrastructure_schoolswimmingpool 函式
+        $('#public_infrastructure_schoolswimmingpool').click(function () {
+            public_infrastructure_schoolswimmingpool();
+        });
+
+
+        // 綁定按鈕點擊事件，觸發 public_infrastructure_privatesportsarena 函式
+        $('#public_infrastructure_privatesportsarena').click(function () {
+            public_infrastructure_privatesportsarena();
+        });
+    });
+
+
+
+    //-----------------------------------歷史街區振興活化老屋案例-----------------------
+
+    // 定義一個函式，用於從 API 獲取歷史街區振興活化老屋資料並匯入資料庫
+    function urban_renewal_allRenovationArchitecture() {
+        // 設定多個 API 請求的 URL
+        const urls = [
+            'https://soa.tainan.gov.tw/Api/Service/Get/77e305c1-4df8-44b7-a047-7b752b4ef0fd',
+            'https://soa.tainan.gov.tw/Api/Service/Get/1d4ea096-a12f-4855-b1f1-0efd101244bc',
+            'https://soa.tainan.gov.tw/Api/Service/Get/3cb900fb-f285-4eb2-bfb2-cfac11a4bc81',
+            'https://soa.tainan.gov.tw/Api/Service/Get/8b7afd57-ded3-4985-bdc1-d181ab468b2d',
+            'https://soa.tainan.gov.tw/Api/Service/Get/3c0ecb59-fce0-4c1a-83dc-25df7807cf37',
+            'https://soa.tainan.gov.tw/Api/Service/Get/36b683ef-f0b2-4d8f-a96a-76d059a38647',
+            'https://soa.tainan.gov.tw/Api/Service/Get/572d08d5-0282-4202-87e6-ff96a84d1351',
+            'https://soa.tainan.gov.tw/Api/Service/Get/8663d9d4-b6eb-4666-a053-593fce073116',
+            'https://soa.tainan.gov.tw/Api/Service/Get/982f430e-bc32-4351-921b-df3115bae08f',
+            'https://soa.tainan.gov.tw/Api/Service/Get/fc1bd4ca-4c8f-4f48-b43b-50184d934daf'
+        ];
+        // 用於儲存所有的結果
+        const results = [];
+        // 計數已完成的請求數量
+        let completedCount = 0;
+        // 透過迴圈處理每個 URL
+        urls.forEach(url => {
+            $.ajax({
+                type: 'GET',
+                url: url,
+                dataType: 'json',
+                contentType: 'application/json;charset=utf-8',
+                success: function (jsondata) {
+                    // 將每個請求的數據結果儲存到 results 中
+                    jsondata.data.forEach(item => {
+                        results.push(item)
+                    });
+                    completedCount++;
+                    // 當所有請求完成時
+                    if (completedCount == urls.length) {
+                        // 對結果進行轉換
+                        const changedataname = results.map(item => {
+                            return {
+                                address: item.門牌,
+                                Landmarkname: item.計畫經營名稱與內容
+                            }
+                        })
+                        // 逐一處理轉換後的數據
+                        $.each(changedataname, function (index, value) {
+                            const address = value.address;
+                            const District = address.split(/[區]/)[0] + '區';
+                            
+                            // 進行地址解析
+                            // 如果有地址，則進行經緯度查詢
+                            if (address !== '') {
+                                setTimeout(function () {
+                                    $.ajax({
+                                        type: 'GET',
+                                        url: wsUrl,
+                                        data: {
+                                            oAPPId: AppID, //應用程式識別碼(APPId)
+                                            oAPIKey: APIKey, // 應用程式介接驗證碼(APIKey)
+                                            oAddress: address, //所要查詢的門牌位置
+                                            oSRS: 'EPSG:4326', //回傳的坐標系統
+                                            oFuzzyType: "0", //模糊比對的代碼
+                                            oResultDataType: 'JSON', //回傳的資料格式
+                                            oFuzzyBuffer: "0", //模糊比對回傳門牌號的許可誤差範圍
+                                            oIsOnlyFullMatch: "false", //是否只進行完全比對
+                                            oIsSupportPast: "true", //是否顯示舊門牌
+                                            oIsShowCodeBase: "true", //是否顯示統計區資訊
+                                            oIsLockCounty: "false", //是否鎖定縣市
+                                            oIsLockTown: "false", //是否鎖定鄉鎮市區
+                                            oIsLockVillage: "false", //是否鎖定村里
+                                            oIsLockRoadSection: "false", //是否鎖定路段
+                                            oIsLockLane: "false", //是否鎖定巷
+                                            oIsLockAlley: "false", //是否鎖定弄
+                                            oIsLockArea: "false", //是否鎖定地區
+                                            oIsSameNumber_SubNumber: "false", //號之、之號是否視為相同
+                                            oCanIgnoreVillage: "false", //找不時是否可忽略村里
+                                            oCanIgnoreNeighborhood: "false", //找不時是否可忽略鄰
+                                            oReturnMaxCount: "0"//如為多筆時，限制回傳最大筆數
+                                        }, dataType: 'xml'
+                                        , success: function (geodata) {
+                                            
+                                            var data = $(geodata).find('string').text();
+                                            var geoJSON = JSON.parse(data);
+                                            // 檢查解析後的資料是否存在
+                                            if (geodata && geoJSON.AddressList.length > 0) {
+                                                // 提取經緯度資訊
+                                                var X = geoJSON.AddressList[0].X;
+                                                var Y = geoJSON.AddressList[0].Y;
+                                                $.ajax({
+                                                    type: 'POST',
+                                                    url: './api/urban_renewal',
+                                                    dataType: 'json',
+                                                    data: JSON.stringify({
+                                                        Large_category: '都市更新',
+                                                        Medium_category: '危老重建',
+                                                        Small_category: '歷史街區振興活化老屋',
+                                                        Landmarkname: value.Landmarkname,
+                                                        District: District,
+                                                        Address: address,
+                                                        Tel: '',
+                                                        X: X,
+                                                        Y: Y
+                                                    }),
+                                                    contentType: 'application/json;charset=utf-8',
+                                                    success: function () {
+                                                        console.log('成功匯入')
+                                                    }, error: function (xhr, status, error) {
+                                                        console.log("無法讀取資料" + error)
+                                                    }
+                                                })
+                                            } else {
+                                                console.log("找不到地址")
+                                            }
+                                        }, error: function (xhr, status, error) {
+                                            console.log('匯入失敗' + error)
+                                        }
+                                    }, 100)
+                                })
+                            } else {
+                                console.log("沒有地址就不找經緯度")
+                            }
+                        })
+                    } else {
+                        console.log('')
+                    }
+                }, error: function (xhr, status, error) {
+                    console.log('失敗' + error)
+                }
+            })
+        })
+    }
+
+
+
+    // 在文件載入完成後執行
+    $(document).ready(function () {
+        // 綁定按鈕點擊事件，觸發 importalldata_urban_renewal 函式
+        $('#importalldata_urban_renewal').click(function () {
+            urban_renewal_allRenovationArchitecture();
+        });
+        // 綁定按鈕點擊事件，觸發 urban_renewal_allRenovationArchitecture 函式
+        $('#urban_renewal_allRenovationArchitecture').click(function () {
+            urban_renewal_allRenovationArchitecture();
+        });
+    });
+
+
+
+
+
+     //-----------------------------------------------------------育樂場所--------------------------------------------------------------------------------------------------
+
+
+    function recreattional_place_movie() {
+        $.ajax({
+            type: 'GET',
+            url: 'https://soa.tainan.gov.tw/Api/Service/Get/b688f1f6-fb23-45d7-960d-a18b395263a3',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (jsondata) {
+                console.log(jsondata)
+                $.each(jsondata.data, function (index, value) {
+                    var District = value.地址.split(/[縣市]/)[1].split(/[區]/)[0] + '區';
+                    var X = value.Longitude;
+                    var Y = value.Latitude;
+                    $.ajax({
+                        type: 'POST',
+                        url: './api/recreational_place',
+                        dataType: 'json',
+                        contentType: 'application/json;charset=utf-8',
+                        data: JSON.stringify({
+                            Large_category: '育樂場所',
+                            Medium_category: '電影院',
+                            Small_category: '電影院',
+                            Landmarkname: value.名稱,
+                            District: District,
+                            Address: value.地址,
+                            Tel: '',
+                            X: X,
+                            Y: Y
+                        }),
+                        success: function () {
+                            console.log('成功匯入')
+                        }, error: function (xhr, status, error) {
+                            console.log("無法匯入資料" + error)
+                        }
+                    })
+                    //setTimeout(recreattional_place__movie,1000)
+                })
+            }, error: function (xhr, status, error) {
+                console.log("無法讀取資料" + error)
+            }
+        })
+
+    }
+
+
+
+
+
+    // 在文件載入完成後執行
+    $(document).ready(function () {
+        // 綁定按鈕點擊事件，觸發 importalldata_recreattional_place 函式
+        $('#importalldata_recreattional_place').click(function () {
+            recreattional_place_movie();
+        });
+        // 綁定按鈕點擊事件，觸發 recreattional_place_movie 函式
+        $('#recreattional_place_movie').click(function () {
+            recreattional_place_movie();
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
